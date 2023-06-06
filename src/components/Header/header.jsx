@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import './style.css'
 import aviao from '../../images/header/logo-aviao.png'
 
 
 const Header = () => {
+
+    
+        
     return (
         <>
             <header>
@@ -43,7 +46,15 @@ const Header = () => {
 
 
                             </button>
-                            <input type="text" name="keywords" className="input-pesquisar" />
+                            <input
+                             className="input-pesquisar"
+                             type="text"
+                             name="keywords"
+                             
+                             
+
+                              
+                             />
 
                         </div>
                     </form>
