@@ -26,7 +26,7 @@ const Home = () => {
 
                             <img src={photoHome} alt="produto" />
 
-                            <p>{item}</p>
+                            <p>{item}nome</p>
 
                             <p>{item} valor </p>
 
