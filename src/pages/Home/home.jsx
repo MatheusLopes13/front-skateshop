@@ -1,5 +1,5 @@
 import React from "react"
-import './style.css'
+import './home.css'
 import photoHome from '../../images/home/capa-home.jpg'
 import Header from "../../components/Header/header.jsx"
 import Footer from "../../components/Footer/footer.jsx"
