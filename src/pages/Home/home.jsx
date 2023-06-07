@@ -35,7 +35,6 @@ const Home = () => {
         tamanho: 43
     } ]
 
-
     return (
         <>
 

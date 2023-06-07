@@ -5,8 +5,8 @@ import aviao from '../../images/header/logo-aviao.png'
 
 const Header = () => {
 
-    
-        
+    let [search, setSearch] = useState()
+
     return (
         <>
             <header>
@@ -30,35 +30,27 @@ const Header = () => {
                     </ul>
                 </div>
 
-
                 <a href="/">
                     <img className="aviao-img menu-2" src={aviao} alt="imagem  aviao" />
                 </a>
-
 
                 <div className="menu-3">
 
                     <form action="../search" method="GET">
                         <div className="pesquisar">
                             <button className="buttonSearch" type="submit">
-
                                 <i className="fa-solid fa-magnifying-glass destaque"></i>
-
-
                             </button>
+
                             <input
-                             className="input-pesquisar"
-                             type="text"
-                             name="keywords"
-                             
-                             
-
-                              
-                             />
-
+                                className="input-pesquisar"
+                                type="text"
+                                name="keywords"
+                                value={search}
+                                onChange={e => setSearch(e.target.value)} 
+                                />
                         </div>
                     </form>
-
 
                     <a data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i className="fa-solid fa-cart-shopping destaque"></i>
@@ -79,15 +71,8 @@ const Header = () => {
 
 
                     <a href="/login">
-
                         <i className="fa-solid fa-user destaque"></i>
-
                     </a>
-
-
-
-
-
 
                 </div>
 
