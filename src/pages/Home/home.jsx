@@ -3,9 +3,37 @@ import './style.css'
 import photoHome from '../../images/home/capa-home.jpg'
 import Header from "../../components/Header/header.jsx"
 import Footer from "../../components/Footer/footer.jsx"
+import foto_1 from "../../images/footer/american-express-removebg-preview (1).png"
+import foto_2 from "../../images/footer/elo-removebg-preview.png"
+import foto_3 from "../../images/footer/facebook.png"
 
 const Home = () => {
-    const arr = [1, 2, 3]
+    const product = [{
+        nome: "tenis DC",
+        cor: "preto",
+        imagem_1: foto_1,
+        imagem_2: foto_2,
+        imagem_3: foto_3,
+        valor: 450.00,
+        tamanho: 43
+    },
+    {
+        nome: "tenis DC",
+        cor: "preto",
+        imagem_1: foto_1,
+        imagem_2: foto_2,
+        imagem_3: foto_3,
+        valor: 450.00,
+        tamanho: 43
+    },{
+        nome: "tenis DC",
+        cor: "preto",
+        imagem_1: foto_1,
+        imagem_2: foto_2,
+        imagem_3: foto_3,
+        valor: 450.00,
+        tamanho: 43
+    } ]
 
 
     return (
@@ -20,15 +48,15 @@ const Home = () => {
             <h3>NOVIDADES</h3>
 
             <div className="container">
-                {arr.map((item) => {
+                {product.map((item) => {
                     return (
                         <div className="produto">
 
-                            <img src={photoHome} alt="produto" />
+                            <img src={item.imagem_1} alt="produto" />
 
-                            <p>{item}nome</p>
+                            <p>{item.nome}</p>
 
-                            <p>{item} valor </p>
+                            <p>R$ {item.valor} </p>
 
                             <div>
 
