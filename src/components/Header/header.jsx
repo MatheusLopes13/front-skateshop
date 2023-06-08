@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import './style.css'
+import './header.css'
 import aviao from '../../images/header/logo-aviao.png'
+import 'bootstrap/dist/js/bootstrap.bundle'
 
 
 const Header = () => {
 
-    
-        
+    let [search, setSearch] = useState()
+
     return (
         <>
             <header>
@@ -30,183 +31,140 @@ const Header = () => {
                     </ul>
                 </div>
 
-
                 <a href="/">
                     <img className="aviao-img menu-2" src={aviao} alt="imagem  aviao" />
                 </a>
-
 
                 <div className="menu-3">
 
                     <form action="../search" method="GET">
                         <div className="pesquisar">
                             <button className="buttonSearch" type="submit">
-
                                 <i className="fa-solid fa-magnifying-glass destaque"></i>
-
-
                             </button>
+
                             <input
-                             className="input-pesquisar"
-                             type="text"
-                             name="keywords"
-                             
-                             
-
-                              
-                             />
-
+                                className="input-pesquisar"
+                                type="text"
+                                name="keywords"
+                                value={search}
+                                onChange={e => setSearch(e.target.value)}
+                            />
                         </div>
                     </form>
-
 
                     <a data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i className="fa-solid fa-cart-shopping destaque"></i>
                     </a>
 
 
-                    {/* <div className="dropdown iniciais">
-                     <p className="margin-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="dropdown iniciais">
+                        <p className="margin-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-                     </p>
-                     <ul className="dropdown-menu">
-                         <li><a className="dropdown-item" href="">Perfil</a></li>
-                         <li><a className="dropdown-item" href="">Meus Pedidos</a></li>
-                         <li><a className="dropdown-item" href="">Sair</a></li>
+                        </p>
+                        <ul className="dropdown-menu">
+                            <li><a className="dropdown-item" href="">Perfil</a></li>
+                            <li><a className="dropdown-item" href="">Meus Pedidos</a></li>
+                            <li><a className="dropdown-item" href="">Sair</a></li>
 
-                     </ul>
-                 </div> */}
+                        </ul>
+                    </div>
 
 
                     <a href="/login">
-
                         <i className="fa-solid fa-user destaque"></i>
-
                     </a>
-
-
-
-
-
 
                 </div>
 
             </header>
 
-            {/* modal             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div className="modal-dialog modal-xl">
-                     <div className="modal-content">
-                       <div className="modal-header">
-       <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-     </div>
-     <div className="modal-body">
-       ...
-     </div>
-     <div className="modal-footer">
-       <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-       <button type="button" className="btn btn-primary">Save changes</button>
-     </div> 
-   </div>
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-xl">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Meu Carrinho</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div >
+                                <div className="titulo">
+                                    <p className="meu-carrinho">MEU CARRINHO</p>
+                                    <div className="box">
+
+                                        <p>
+                                            produto
+                                        </p>
+
+                                        <p>
+                                            subtotal
+                                        </p>
+                                    </div>
+                                </div>
 
 
 
 
 
+                                <div className="produto-carrinho">
+                                    <div className="display-flex">
+                                        <img src={aviao} />
+                                        <div>
+                                            <p> nome </p>
 
-                         <div className="modal-header">
+                                            <p> cor </p>
 
-                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
+                                            <p>quantidadeporoduto</p>
+                                        </div>
 
+                                    </div>
 
-                         <main>
-                             <div className="titulo">
-                                 <p className="meu-carrinho">MEU CARRINHO</p>
-                                 <div className="box">
-
-                                     <p>
-                                         produto
-                                     </p>
-
-                                     <p>
-                                         subtotal
-                                     </p>
-                                 </div>
-                             </div>
+                                    <div className="display-flex">
+                                        <p>R$  </p>
+                                        <p>X</p>
+                                    </div>
+                                </div>
 
 
+                            </div>
 
-                             <div id="container" className="container">
+                            <div className="subtotal">
+                                <p>SUBTOTAL</p>
+                                <p>R$ 000,00</p>
+                            </div>
 
+                            <div className="frete">
+                                <p>FRETE:</p>
+                                <p>R$ 000,00</p>
+                            </div>
 
+                            <div className="total">
+                                <p>TOTAL:</p>
+                                <p id="valor-total">R$ 000,00</p>
+                            </div>
 
+                            <div className="total">
+                                <a href="../home.ejs">Ver mais produtos</a>
 
+                                <a href="../pagamento.ejs">
+                                    <button className="button-finalizar">
+                                        Finalizar compra
+                                    </button>
+                                </a>
+                            </div>
 
-                                 <div className="produto-carrinho">
-                                     <div className="display-flex">
-                                         <img src= {aviao} />
-                                             <div>
-                                                 <p> nome </p>
+                        </div>
+                    </div>
 
-                                                 <p> cor </p>
+                </div>
 
-                                                 <p>quantidadeporoduto</p>
-                                             </div>
+                <div className="modal-header">
 
-                                     </div>
-
-                                     <div className="display-flex">
-                                         <p>R$  </p>
-                                         <p>X</p>
-                                     </div>
-                                 </div>
-
-
-
-
-                             </div>
-
-
-
-                             <div className="subtotal">
-                                 <p>SUBTOTAL</p>
-                                 <p>R$ 000,00</p>
-                             </div>
-
-                             <div className="frete">
-                                 <p>FRETE:</p>
-                                 <p>R$ 000,00</p>
-                             </div>
-
-                             <div className="total">
-                                 <p>TOTAL:</p>
-                                 <p id="valor-total">R$ 000,00</p>
-                             </div>
-
-                             <div className="total">
-                                 <a href="../home.ejs">Ver mais produtos</a>
-
-                                 <a href="../pagamento.ejs">
-                                     <button className="button-finalizar">
-                                         Finalizar compra
-                                     </button>
-                                 </a>
-                             </div>
-
-                         </main>
-
-
-
-
-
-                     </div>
-                 </div> */}
-
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
 
         </>
-
-
     )
 
 }
