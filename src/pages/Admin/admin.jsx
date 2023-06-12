@@ -48,93 +48,30 @@ function AdminPage() {
 
         try {
             const response = await api.post('product', product);
+            getProducts()
 
         } catch (error) {
             console.log(error)
         }
     }
 
+    const deleteProduct = async (Id) => {
+        const response = await api.delete(`delete/${Id}`);
+        console.log(response)
+        getProducts()
+
+    }
+
+
     return (
         <>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        adicionar
+      </button>
 
-            <form className="form">
+          
 
-                <div >
-                    <div>
-                        <label>Nome</label>
-                        <input value={nome}
-                            onChange={e => setNome(e.target.value)}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Valor</label>
-                        <input
-                            value={valor}
-                            onChange={e => setValor(e.target.value)}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Tamanho</label>
-                        <input
-                            value={tamanho}
-                            onChange={e => setTamanho(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Descrição</label>
-                        <input
-                            value={descricao}
-                            onChange={e => setDescricao(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Cor </label>
-                        <input
-                            value={cor}
-                            onChange={e => setCor(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Imagem </label>
-                        <input
-                            value={imagem_1}
-                            onChange={e => setImagem_1(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Imagem </label>
-                        <input
-                            value={imagem_2}
-                            onChange={e => setImagem_2(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Imagem </label>
-                        <input
-                            value={imagem_3}
-                            onChange={e => setImagem_3(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Categoria</label>
-                        <input
-                            value={id_categoria}
-                            onChange={e => setId_categoria(e.target.value)} />
-                    </div>
-
-                    <div>
-                        <label>Codigo do produto</label>
-                        <input
-                            value={codigo_produto}
-                            onChange={e => setCodigo_produto(e.target.value)} />
-                    </div>
-
-                    <button onClick={() => createProduct()}>Enviar</button>
-                </div>
-
-            </form>
+           
 
             <div className="container">
 
@@ -151,9 +88,9 @@ function AdminPage() {
                                 <p>{item.tamanho} </p>
                                 <p>{item.cor} </p>
 
-                                <form>
-                                    <button> Remover Produto</button>
-                                </form>
+
+                                <button type="button" onClick={() => deleteProduct(item.id)}> Remover Produto</button>
+
                                 <a > editar produto</a>
 
                             </div>
@@ -162,6 +99,105 @@ function AdminPage() {
                 }
 
             </div>
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Empresa</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            <form className="form">
+
+<div >
+    <div>
+        <label>Nome</label>
+        <input value={nome}
+            onChange={e => setNome(e.target.value)}
+        />
+    </div>
+
+    <div>
+        <label>Valor</label>
+        <input
+            value={valor}
+            onChange={e => setValor(e.target.value)}
+        />
+    </div>
+
+    <div>
+        <label>Tamanho</label>
+        <input
+            value={tamanho}
+            onChange={e => setTamanho(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Descrição</label>
+        <input
+            value={descricao}
+            onChange={e => setDescricao(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Cor </label>
+        <input
+            value={cor}
+            onChange={e => setCor(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Imagem </label>
+        <input
+            value={imagem_1}
+            onChange={e => setImagem_1(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Imagem </label>
+        <input
+            value={imagem_2}
+            onChange={e => setImagem_2(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Imagem </label>
+        <input
+            value={imagem_3}
+            onChange={e => setImagem_3(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Categoria</label>
+        <input
+            value={id_categoria}
+            onChange={e => setId_categoria(e.target.value)} />
+    </div>
+
+    <div>
+        <label>Codigo do produto</label>
+        <input
+            value={codigo_produto}
+            onChange={e => setCodigo_produto(e.target.value)} />
+    </div>
+
+    
+</div>
+
+</form>
+
+            </div>
+            <div class="modal-footer">
+              <button onClick={() => createProduct()} type="button" class="btn btn-secondary" data-bs-dismiss="modal">add produto</button>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+            
 
         </>
     )
