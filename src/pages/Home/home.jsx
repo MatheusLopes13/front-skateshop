@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import api from "../../services/api"
 import './home.css'
 import photoHome from '../../images/home/capa-home.jpg'
 import Header from "../../components/Header/header.jsx"
@@ -7,37 +8,26 @@ import foto_1 from "../../images/footer/american-express-removebg-preview (1).pn
 import foto_2 from "../../images/footer/elo-removebg-preview.png"
 import foto_3 from "../../images/footer/facebook.png"
 
+
+
 const Home = () => {
-    const product = [{
-        nome: "tenis DC",
-        cor: "preto",
-        imagem_1: foto_1,
-        imagem_2: foto_2,
-        imagem_3: foto_3,
-        valor: 450.00,
-        tamanho: 43
-    },
-    {
-        nome: "tenis DC",
-        cor: "preto",
-        imagem_1: foto_1,
-        imagem_2: foto_2,
-        imagem_3: foto_3,
-        valor: 450.00,
-        tamanho: 43
-    },{
-        nome: "tenis DC",
-        cor: "preto",
-        imagem_1: foto_1,
-        imagem_2: foto_2,
-        imagem_3: foto_3,
-        valor: 450.00,
-        tamanho: 43
-    } ]
+
+    const [allProducts, setAllProducts] = useState([])
+
+    useEffect(() => {
+        getProducts()
+    }, [])
+
+    const getProducts = async () => {
+        const response = await api.get('allProducts')
+        setAllProducts(response.data)
+
+    }
+
+   
 
     return (
         <>
-
             <Header />
 
             <div className="banner">
@@ -47,29 +37,23 @@ const Home = () => {
             <h3>NOVIDADES</h3>
 
             <div className="container">
-                {product.map((item) => {
+                {allProducts.map((item) => {
                     return (
-                        <div className="produto">
+                        <div key={item.id} className="produto">
 
-                            <img src={item.imagem_1} alt="produto" />
+                            <img src={foto_1} alt="produto" />
 
                             <p>{item.nome}</p>
 
                             <p>R$ {item.valor} </p>
 
-                            <div>
+                            <button> Comprar </button>
 
-                                <a href="">
-                                    <button> Comprar </button>
-                                </a>
-
-                            </div>
                         </div>
                     )
                 })
 
                 }
-
 
             </div>
 

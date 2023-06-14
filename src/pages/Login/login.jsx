@@ -1,20 +1,49 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom'
 import './style.css'
 import Header from "../../components/Header/header.jsx"
 import Footer from "../../components/Footer/footer.jsx"
+import api from "../../services/api"
+
+
 const Login = () => {
+    const navigate = useNavigate()
+
+    const handleLogin = async () => {
+        const auth = {
+            email: emailLogin,
+            senha: senhaLogin
+        }
+        try {
+            const response = await api.post('/login', auth)
+    
+        
+    
+            navigate('/')
+    
+        } catch (error) {
+          alert(error.response.data)
+        }
+
+    }
+
+   
     
     
-    const [keywords1, setKeywords1] = useState()
-    const [keywords2, setKeywords2] = useState()
-    const [keywords3, setKeywords3] = useState()
-    const [keywords4, setKeywords4] = useState()
-    const [keywords5, setKeywords5] = useState()
-    const [keywords6, setKeywords6] = useState()
-    const [keywords7, setKeywords7] = useState()
-    const [keywords8, setKeywords8] = useState()
-    const [keywords9, setKeywords9] = useState()
-    const [keywords10, setKeywords10] = useState()
+    const [emailLogin, setEmailLogin] = useState()
+    const [senhaLogin, setSenhaLogin] = useState()
+    const [nome, setNome] = useState()
+    const [sobrenome, setSobrenome] = useState()
+    const [email, setEmail] = useState()
+    const [rua, setRua] = useState()
+    const [numero, setNumero] = useState()
+    const [cep, setCep] = useState()
+    const [senha, setSenha] = useState()
+    const [confirma, setConfirma] = useState()
+
+    useEffect(() => {
+        
+    }, [])
 
     
 
@@ -31,7 +60,7 @@ return (
         <div className="display-flex">
 
             <div className="width-30">
-                <form>
+                
                     <p className="login">Faça login</p>
 
                     <div className="inputs">  
@@ -39,8 +68,8 @@ return (
                             <input  
                              type="email"
                              name="email" required minlength="8"
-                             value={keywords1}
-                             onChange={e => setKeywords1(e.target.value)}/>
+                             value={emailLogin}
+                             onChange={e => setEmailLogin(e.target.value)}/>
                             <p className="mensagem" id="email-aviso">Campo e-mail obrigatório</p>   
                         </div>
                     
@@ -50,27 +79,27 @@ return (
                              type="password"
                              name="senha"
                              minlength="8" required
-                             value={keywords2}
-                             onChange={e => setKeywords2(e.target.value)}
+                             value={senhaLogin}
+                             onChange={e => setSenhaLogin(e.target.value)}
                              />
                             <p className="mensagem" id="senha-aviso">Campo senha obrigatório</p>    
                         </div>
 
                         <div className="inputs">
-                        <button type="submit" className="buttom-black">Entrar</button>
-                        <a href="../recuperar-senha/recuperar-senha.html">Esqueceu sua senha?</a>
+                        <button type="submit" className="buttom-black" onClick={handleLogin}>Entrar</button>
+
                         <button className="buttom-facebook">
                             <img src="/images/facebook.png" alt="" className="fb-image"/>
                             Entrar com Facebook
                         </button>
                     </div>
 
-                </form>
+                
             
             </div>
 
             <div className="width-30">
-                <form action="/criarconta" method="post">
+                
                     <p className="login">Criar conta</p>
 
                     <div className="input-line">
@@ -79,8 +108,8 @@ return (
                             <input 
                              type="text"
                              name="nome"
-                             value={keywords3}
-                             onChange={e => setKeywords3(e.target.value)}/>
+                             value={nome}
+                             onChange={e => setNome(e.target.value)}/>
                             <p className="mensagem" id="nome-aviso">Campo nome obrigatório</p>
                         </div>
                 
@@ -89,8 +118,8 @@ return (
                             <input 
                              type="text"
                              name="sobrenome"
-                             value={keywords4}
-                             onChange={e => setKeywords4(e.target.value)}/>
+                             value={sobrenome}
+                             onChange={e => setSobrenome(e.target.value)}/>
                             <p className="mensagem" id="sobrenome-aviso">Campo sobrenome obrigatório</p>
                         </div>
 
@@ -102,8 +131,8 @@ return (
                         <input 
                          type="email"
                          name="email"
-                         value={keywords5}
-                         onChange={e => setKeywords5(e.target.value)}/>
+                         value={email}
+                         onChange={e => setEmail(e.target.value)}/>
                         <p className="mensagem" id="logar-aviso">Campo email obrigatório</p>
                     </div>
 
@@ -111,9 +140,9 @@ return (
                         <label for="endereço">Rua</label>  
                         <input 
                          type="text"
-                         name="endereço"
-                         value={keywords6}
-                         onChange={e => setKeywords6(e.target.value)}/>
+                         name="endereco"
+                         value={rua}
+                         onChange={e => setRua(e.target.value)}/>
                         <p className="mensagem" id="logar-aviso">Campo rua obrigatório</p>
                     </div>
 
@@ -122,8 +151,8 @@ return (
                         <input 
                          type="text"
                          name="numero"
-                         value={keywords7}
-                         onChange={e => setKeywords7(e.target.value)}/>
+                         value={numero}
+                         onChange={e => setNumero(e.target.value)}/>
                         <p className="mensagem" id="logar-aviso">Campo número obrigatório</p>
                     </div>
 
@@ -132,8 +161,8 @@ return (
                         <input 
                          type="text"
                          name="cep"
-                         value={keywords8}
-                         onChange={e => setKeywords8(e.target.value)}/>
+                         value={cep}
+                         onChange={e => setCep(e.target.value)}/>
                         <p className="mensagem" id="logar-aviso">Campo CEP obrigatório</p>
                     </div>
             
@@ -144,8 +173,8 @@ return (
                              type="password"
                              name="senha"
                              minlength="8" required
-                             value={keywords9}
-                             onChange={e => setKeywords9(e.target.value)}/> 
+                             value={senha}
+                             onChange={e => setSenha(e.target.value)}/> 
                             <p className="mensagem" id="entrar-aviso">Campo senha obrigatório</p>
 
                         </div>
@@ -156,8 +185,8 @@ return (
                             type="password"
                             name="confirmarsenha"
                             minlength="8" required 
-                            value={keywords10}
-                            onChange={e => setKeywords10(e.target.value)}/> 
+                            value={confirma}
+                            onChange={e => setConfirma(e.target.value)}/> 
                             <p className="mensagem" id="confirma-aviso">Campo confirmar senha obrigatório</p>   
                         </div>
 
@@ -165,7 +194,7 @@ return (
                     
                     <button type="submit" className="buttom-black">Cadastrar</button>
                     
-                </form>
+                
             </div>
         </div>
        
