@@ -1,0 +1,73 @@
+.main {
+    width: 100%;
+    min-height: 10rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    margin-top: 7rem;
+    text-align: center ;
+}
+
+.filtros {
+    min-width: 10%;
+    min-height: 5rem;
+    max-width: 20%;
+    background-color: #d9d9d9;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 1rem 1rem 0 ;
+
+}
+
+.container-produtos {
+    width: 80%;
+    min-height: 5rem;
+    padding: .5rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+input[type=checkbox] {
+    margin-right: .5rem;
+}
+
+.produtos-skate{
+    border: 2px solid black;
+    width: 24%;
+    padding: .5rem;
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+    border-radius: .5rem;
+}
+
+.button-comprar{
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.button-comprar:hover{
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    transition: all .5s ease-out;
+}
+
+.img-produto{
+    min-height: 10rem;
+    width: 100%;
+}
+
+
+    
+    

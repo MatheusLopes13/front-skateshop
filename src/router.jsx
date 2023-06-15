@@ -8,6 +8,7 @@ import Home from "./pages/Home/home";
 import Login from "./pages/Login/login";
 import Detals from "./pages/Detals/detals";
 import Admin from "./pages/Admin/admin"
+import Skate from "./pages/Products/skate/skate"
 
 const Router = () => {
      
@@ -30,6 +31,11 @@ return (
           />
 
           <Route path="/admin" element={<Admin/>} />
+
+          <Route  
+            path="/skate"
+            element={<Skate/>}
+          />
 
     
 

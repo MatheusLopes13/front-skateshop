@@ -25,7 +25,7 @@ const Login = () => {
             navigate('/')
     
         } catch (error) {
-            alert(error.response)
+            alert(error.response.data.error)
         }
 
     }
