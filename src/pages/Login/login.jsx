@@ -7,6 +7,21 @@ import api from "../../services/api"
 
 
 const Login = () => {
+
+    // const user = {
+    //     email: keywords1,
+    //     senha: keywords2
+    // };
+
+
+    // const loginUser = () => {
+    //     const response = api.post('logar' , user )
+
+    //     localStorage.setItem('token', response.data.token);
+    // }
+
+
+    
     const navigate = useNavigate()
 
     const handleLogin = async () => {
@@ -15,14 +30,15 @@ const Login = () => {
             senha: senhaLogin
         }
         try {
+         
             const response = await api.post('/login', auth)
-    
-        
-    
+             const token = response.data.token
+             localStorage.setItem('token', token);
+            
             navigate('/')
     
         } catch (error) {
-          alert(error.response.data)
+          alert(error.response)
         }
 
     }

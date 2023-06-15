@@ -72,14 +72,16 @@ function AdminPage() {
 
 
     const getProducts = async () => {
-        const response = await api.get('allProducts')
+        const response = await api.get('products')
         setAllProducts(response.data)
     }
 
     const createProduct = async () => {
 
         try {
-            const response = await api.post('product', product);
+            const tokenArmazenado = localStorage.getItem('token');
+            console.log(tokenArmazenado)
+            const response = await api.post('product', {product: product, tokenArmazenado: tokenArmazenado});
             getProducts()
 
         } catch (error) {
@@ -88,12 +90,19 @@ function AdminPage() {
     }
 
     const deleteProduct = async (Id) => {
-        const response = await api.delete(`delete/${Id}`);
+
+        const tokenArmazenado = localStorage.getItem('token');
+        
+
+        const response = await api.delete(`delete/${Id}`, tokenArmazenado);
         getProducts()
     }
 
     const updateProduct = async (obj) => {
-        const response = await api.put(`update/${obj.id}`, product)
+        const tokenArmazenado = localStorage.getItem('token');
+
+
+        const response = await api.put(`update/${obj.id}`, {product: product, token: tokenArmazenado} )
         getProducts()
     }
 

@@ -5,8 +5,7 @@ import photoHome from '../../images/home/capa-home.jpg'
 import Header from "../../components/Header/header.jsx"
 import Footer from "../../components/Footer/footer.jsx"
 import foto_1 from "../../images/footer/american-express-removebg-preview (1).png"
-import foto_2 from "../../images/footer/elo-removebg-preview.png"
-import foto_3 from "../../images/footer/facebook.png"
+
 
 
 
@@ -19,9 +18,8 @@ const Home = () => {
     }, [])
 
     const getProducts = async () => {
-        const response = await api.get('allProducts')
+        const response = await api.get('products')
         setAllProducts(response.data)
-
     }
 
    
