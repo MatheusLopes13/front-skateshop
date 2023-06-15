@@ -19,11 +19,9 @@ function AdminPage() {
 
     const [allProducts, setAllProducts] = useState([])
 
-
     useEffect(() => {
         getProducts()
     }, [])
-
 
     function editProduct(obj) {
 
@@ -42,7 +40,7 @@ function AdminPage() {
     }
 
     function clearInput() {
-        
+        setId(null)
         setNome('')
         setValor('')
         setTamanho('')
@@ -54,7 +52,6 @@ function AdminPage() {
         setId_categoria('')
         setCodigo_produto('')
     }
-
 
     const product = {
         id,
@@ -70,18 +67,16 @@ function AdminPage() {
         codigo_produto
     }
 
-
     const getProducts = async () => {
         const response = await api.get('products')
         setAllProducts(response.data)
     }
 
     const createProduct = async () => {
-
         try {
             const tokenArmazenado = localStorage.getItem('token');
-            console.log(tokenArmazenado)
-            const response = await api.post('product', {product: product, tokenArmazenado: tokenArmazenado});
+        
+            const response = await api.post('product', product , { headers: { Authorization: tokenArmazenado } });
             getProducts()
 
         } catch (error) {
@@ -90,19 +85,14 @@ function AdminPage() {
     }
 
     const deleteProduct = async (Id) => {
-
         const tokenArmazenado = localStorage.getItem('token');
-        
-
-        const response = await api.delete(`delete/${Id}`, tokenArmazenado);
+        const response = await api.delete(`admin/delete/${Id}`, { headers: { Authorization: tokenArmazenado } });
         getProducts()
     }
 
     const updateProduct = async (obj) => {
         const tokenArmazenado = localStorage.getItem('token');
-
-
-        const response = await api.put(`update/${obj.id}`, {product: product, token: tokenArmazenado} )
+        const response = await api.put(`update/${obj.id}`, product, { headers: { Authorization: tokenArmazenado } } )
         getProducts()
     }
 
@@ -133,7 +123,6 @@ function AdminPage() {
                                 </button>
 
                                 <button  type="button" onClick={() => deleteProduct(item.id)}> Remover Produto</button>
-
 
                             </div>
                         )
@@ -215,6 +204,7 @@ function AdminPage() {
                                     <div>
                                         <label>Categoria</label>
                                         <input
+                                            type="number"
                                             value={id_categoria}
                                             onChange={e => setId_categoria(e.target.value)} />
                                     </div>
@@ -332,7 +322,6 @@ function AdminPage() {
                     </div>
                 </div>
             </div>
-
 
         </>
     )
