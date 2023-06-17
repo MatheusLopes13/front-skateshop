@@ -3,7 +3,8 @@ import Header from "../../../components/Header/header.jsx"
 import Footer from "../../../components/Footer/footer.jsx"
 import './skate.css'
 
-import image_teste from '../../../images/home/capa-home.jpg'
+
+import skate from '../../../images/skate/skate.png'
 
 
 
@@ -55,8 +56,26 @@ const Skate = () => {
             <div className="container-produtos">
 
                 <div className="produtos-skate">
-                    <img className="img-produto" src={image_teste}/>
-                    <p className="text-center mt-2 mb-1"><strong>Shape BOB</strong></p>
+                    <img className="img-produto" src={skate}/>
+                    <p className="text-center mt-2 mb-1"><strong>Shape com lixa grátis!</strong></p>
+                    <p className="text-center mb-1"><strong>$ 250,00</strong></p>
+
+                    <button className="button-comprar">Comprar</button>
+
+                </div>
+
+                <div className="produtos-skate">
+                    <img className="img-produto" src={skate}/>
+                    <p className="text-center mt-2 mb-1"><strong>Shape com lixa grátis!</strong></p>
+                    <p className="text-center mb-1"><strong>$ 250,00</strong></p>
+
+                    <button className="button-comprar">Comprar</button>
+
+                </div>
+
+                <div className="produtos-skate">
+                    <img className="img-produto" src={skate}/>
+                    <p className="text-center mt-2 mb-1"><strong>Shape com lixa grátis!</strong></p>
                     <p className="text-center mb-1"><strong>$ 250,00</strong></p>
 
                     <button className="button-comprar">Comprar</button>
