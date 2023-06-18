@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './header.css'
 import aviao from '../../images/header/logo-aviao.png'
 import 'bootstrap/dist/js/bootstrap.bundle'
+import utils from "../../services/utils";
 
 
 const Header = () => {
 
     let [search, setSearch] = useState()
+    let [carrinhoProduct, setCarrinho] = useState(null)
+
+
+
+    const teste = () => {
+        setCarrinho(utils.getCarrinho())
+
+        console.log(carrinhoProduct)
+
+    }
 
     return (
         <>
@@ -53,7 +64,7 @@ const Header = () => {
                         </div>
                     </form>
 
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={teste}>
                         <i className="fa-solid fa-cart-shopping destaque"></i>
                     </a>
 
@@ -102,29 +113,30 @@ const Header = () => {
                                     </div>
                                 </div>
 
+                                {
+                                    carrinhoProduct && carrinhoProduct.map((item, index) => {
+                                        return (
+                                            <div className="produto-carrinho" key={index}>
+                                                <div className="display-flex">
+                                                    <img src={aviao} />
+                                                    <div>
+                                                        <p> {item.nome} </p>
 
+                                                        <p> {item.cor} </p>
 
+                                                        <p> 1x </p>
+                                                    </div>
 
+                                                </div>
 
-                                <div className="produto-carrinho">
-                                    <div className="display-flex">
-                                        <img src={aviao} />
-                                        <div>
-                                            <p> nome </p>
+                                                <div className="display-flex">
+                                                    <p>R$ {item.valor} </p>
+                                                </div>
+                                            </div>
+                                        )
 
-                                            <p> cor </p>
-
-                                            <p>quantidadeporoduto</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div className="display-flex">
-                                        <p>R$  </p>
-                                        <p>X</p>
-                                    </div>
-                                </div>
-
+                                    })
+                                }
 
                             </div>
 

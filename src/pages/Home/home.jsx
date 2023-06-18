@@ -5,6 +5,7 @@ import photoHome from '../../images/home/capa-home.jpg'
 import Header from "../../components/Header/header.jsx"
 import Footer from "../../components/Footer/footer.jsx"
 import foto_1 from "../../images/footer/american-express-removebg-preview (1).png"
+import utils from "../../services/utils"
 
 
 
@@ -12,8 +13,7 @@ import foto_1 from "../../images/footer/american-express-removebg-preview (1).pn
 const Home = () => {
 
     const [allProducts, setAllProducts] = useState([])
-
-    useEffect(() => {
+    useEffect(() => {     
         getProducts()
     }, [])
 
@@ -21,6 +21,16 @@ const Home = () => {
         const response = await api.get('products')
         setAllProducts(response.data)
     }
+
+    const addCarrinho = (item) => {
+        utils.setCarrinho(item)
+        console.log(utils.getCarrinho())
+
+    }
+
+    
+
+
 
    
 
@@ -45,7 +55,7 @@ const Home = () => {
 
                             <p>R$ {item.valor} </p>
 
-                            <button> Comprar </button>
+                            <button onClick={ () => addCarrinho(item)}> Comprar </button>
 
                         </div>
                     )
