@@ -29,6 +29,8 @@ const Home = () => {
         console.log(utils.getCarrinho())
     }
 
+  
+
     
 
 

@@ -12,10 +12,14 @@ const Header = () => {
 
 
 
-    const teste = () => {
+    const getProducts = () => {
         setCarrinho(utils.getCarrinho())
 
-        console.log(carrinhoProduct)
+    }
+
+    const deleteCarrinho = (id) => {
+        utils.deleteProduct(id)
+        setCarrinho(utils.getCarrinho())
 
     }
 
@@ -64,7 +68,7 @@ const Header = () => {
                         </div>
                     </form>
 
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={teste}>
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={getProducts}>
                         <i className="fa-solid fa-cart-shopping destaque"></i>
                     </a>
 
@@ -132,6 +136,7 @@ const Header = () => {
                                                 <div className="display-flex">
                                                     <p>R$ {item.valor} </p>
                                                 </div>
+                                               <button onClick={() => deleteCarrinho(item.id)} >excluir</button>
                                             </div>
                                         )
 
