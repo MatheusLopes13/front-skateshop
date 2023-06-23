@@ -13,6 +13,8 @@ import utils from "../../services/utils"
 const Home = () => {
 
     const [allProducts, setAllProducts] = useState([])
+
+
     useEffect(() => {     
         getProducts()
     }, [])
@@ -25,14 +27,10 @@ const Home = () => {
     const addCarrinho = (item) => {
         utils.setCarrinho(item)
         console.log(utils.getCarrinho())
-
     }
 
     
 
-
-
-   
 
     return (
         <>

@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Header from "../../../components/Header/header.jsx"
 import Footer from "../../../components/Footer/footer.jsx"
 import './skate.css'
+import utils from "../../../services/utils.js"
 
 
 import skate from '../../../images/skate/skate.png'
@@ -10,9 +11,21 @@ import skate from '../../../images/skate/skate.png'
 
 
 const Skate = () => {
+
+    
+useEffect(() => {
+console.log(utils.getCarrinho())
+})
+
     return (
+
+        
         <>
-        <Header/>
+
+        
+<p>{utils.getCarrinho()}</p>
+
+        {/* <Header/>
         <h3> S K A T E S</h3>
         <div className="main">
             <div className="filtros">
@@ -83,7 +96,8 @@ const Skate = () => {
                 </div>
             </div>
         </div>
-        <Footer/>
+        <Footer/> */}
+       
         </>
     )
 }
