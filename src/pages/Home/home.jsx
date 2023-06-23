@@ -24,7 +24,6 @@ const Home = () => {
 
     const addCarrinho = (item) => {
         utils.setCarrinho(item)
-        console.log(utils.getCarrinho())
 
     }
 

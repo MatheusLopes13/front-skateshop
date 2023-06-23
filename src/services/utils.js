@@ -2,12 +2,11 @@ let carrinho = []
 const utils = {
     setCarrinho: (item) => {
         carrinho.push(item)
-
     },
         
     
     getCarrinho: () => {
-        return carrinho
+        return [...carrinho]
     }
  
 

@@ -44,11 +44,18 @@ const Login = () => {
 
         try {
 
-            const response = await api.post('/criarconta', newUser)
-            if (response){
-                console.log(response)
-                alert('Conta criada com sucesso!')
+            if (newUser.senha === newUser.confirma){
+                const response = await api.post('/criarconta', newUser)
+                if (response){
+                    console.log(response)
+                    alert('Conta criada com sucesso!')
+                }
+
+            }else {
+                alert('Senhas não coincidem!')
             }
+
+            
 
 
         }  catch (error) {
