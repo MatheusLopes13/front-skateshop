@@ -31,7 +31,7 @@ const Header = ({ usuario }) => {
         localStorage.removeItem('usuario');
         setAdmin(false);
         setIniciais(false)
-        navigate('/')
+        navigate('/');
     }
 
     useEffect(() => {     
