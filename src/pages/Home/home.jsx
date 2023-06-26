@@ -29,7 +29,7 @@ const Home = () => {
                 const myDecodedToken = decodeToken(token);
                 const url = `usuario/${myDecodedToken.id}`
                 const response = await api.get(url, null, { headers: { Authorization: token } })
-                console.log(response)
+                localStorage.setItem('usuario', JSON.stringify(response.data.user))
             }
             catch (err) {
                 console.error(err)
