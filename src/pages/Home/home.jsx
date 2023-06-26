@@ -13,7 +13,7 @@ import { decodeToken} from 'react-jwt'
 const Home = () => {
 
     const [allProducts, setAllProducts] = useState([])
-
+    const [userLogged, setUserLogged] = useState()
     
     useEffect(() => {     
         getProducts()
@@ -30,6 +30,8 @@ const Home = () => {
                 const url = `usuario/${myDecodedToken.id}`
                 const response = await api.get(url, null, { headers: { Authorization: token } })
                 localStorage.setItem('usuario', JSON.stringify(response.data.user))
+                setUserLogged(response.data.user)
+                console.log(userLogged)
             }
             catch (err) {
                 console.error(err)
@@ -54,7 +56,7 @@ const Home = () => {
 
     return (
         <>
-            <Header />
+            <Header usuario={userLogged}/>
 
             <div className="banner">
                 <img className="img-home" src={photoHome} alt="capahome" />

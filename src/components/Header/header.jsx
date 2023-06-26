@@ -3,13 +3,15 @@ import './header.css'
 import aviao from '../../images/header/logo-aviao.png'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import utils from "../../services/utils";
+import { Navigate, useNavigate } from "react-router";
 
 
-const Header = () => {
-
+const Header = ({ usuario }) => {
+    const navigate = useNavigate()
     let [search, setSearch] = useState()
     let [carrinhoProduct, setCarrinho] = useState(null)
-
+    let [iniciais, setIniciais] = useState(false)
+    let [admin, setAdmin] = useState(false)
 
 
     const getProducts = () => {
@@ -22,6 +24,24 @@ const Header = () => {
         setCarrinho(utils.getCarrinho())
 
     }
+
+   
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('usuario');
+        setAdmin(false);
+        setIniciais(false)
+        navigate('/')
+    }
+
+    useEffect(() => {     
+        console.log(usuario)
+        if(usuario){
+            setIniciais(usuario.iniciais)
+            setAdmin(usuario.administrador)
+        }
+        
+    }, [usuario])
 
     return (
         <>
@@ -40,7 +60,7 @@ const Header = () => {
                         </li>
 
                         <li>
-                            <a href="/admin">Admin</a>
+                          {admin ? <a href="/admin">Admin</a> : null}
                         </li>
 
                     </ul>
@@ -72,23 +92,24 @@ const Header = () => {
                         <i className="fa-solid fa-cart-shopping destaque"></i>
                     </a>
 
-
-                    <div className="dropdown iniciais">
+                    {iniciais ?                     <div className="dropdown iniciais">
                         <p className="margin-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-
+                            {iniciais}
                         </p>
                         <ul className="dropdown-menu">
                             <li><a className="dropdown-item" href="">Perfil</a></li>
                             <li><a className="dropdown-item" href="">Meus Pedidos</a></li>
-                            <li><a className="dropdown-item" href="">Sair</a></li>
+                            <li><a className="dropdown-item" onClick={logout}>Sair</a></li>
 
                         </ul>
-                    </div>
+                    </div> : null } 
 
 
-                    <a href="/login">
-                        <i className="fa-solid fa-user destaque"></i>
-                    </a>
+                        {!iniciais ? 
+                        (<a href="/login">
+                            <i className="fa-solid fa-user destaque"></i>
+                        </a>)  : null}
+                    
 
                 </div>
 

@@ -25,7 +25,7 @@ console.log(utils.getCarrinho())
         
 <p>{utils.getCarrinho()}</p>
 
-        {/* <Header/>
+        <Header/>
         <h3> S K A T E S</h3>
         <div className="main">
             <div className="filtros">
@@ -96,7 +96,7 @@ console.log(utils.getCarrinho())
                 </div>
             </div>
         </div>
-        <Footer/> */}
+        <Footer/>
        
         </>
     )
