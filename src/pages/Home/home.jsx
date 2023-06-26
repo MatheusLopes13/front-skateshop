@@ -6,19 +6,37 @@ import Header from "../../components/Header/header.jsx"
 import Footer from "../../components/Footer/footer.jsx"
 import foto_1 from "../../images/footer/american-express-removebg-preview (1).png"
 import utils from "../../services/utils"
-
-
+import { decodeToken} from 'react-jwt'
+ 
 
 
 const Home = () => {
 
     const [allProducts, setAllProducts] = useState([])
 
-
+    
     useEffect(() => {     
         getProducts()
+        getUser()
+        
     }, [])
-
+    
+    const getUser = async () => {
+        const token = localStorage.getItem('token')
+        
+        if(token !== undefined && token !== null){
+            try {
+                const myDecodedToken = decodeToken(token);
+                const url = `usuario/${myDecodedToken.id}`
+                const response = await api.get(url, null, { headers: { Authorization: token } })
+                console.log(response)
+            }
+            catch (err) {
+                console.error(err)
+            }
+        }
+        
+    }
     const getProducts = async () => {
         const response = await api.get('products')
         setAllProducts(response.data)
